@@ -1,26 +1,10 @@
-import { supabase } from "../_lib/supabase";
+import { createTransaction } from "../_lib/action";
+import { auth } from "../_lib/auth";
+
 import Button from "./Button";
 
 export default function TransactionForm () {
-    async function createTransaction(formData) {
-        "use server";
-        const transaction = {
-            type: formData.get("type"),
-            description: formData.get("description"),
-            category: formData.get("category"),
-            amount: Number(formData.get("amount"))
-        }
-        const {data, error } = await supabase
-        .from("transactions")
-        .insert([transaction])
-        .select();
-
-        if (error) {   
-            console.log(error)
-            throw error
-        }
-        console.log(data)
-    }
+          
 
     return (
         <form className="flex flex-col items-center gap-6" action={createTransaction}> 
