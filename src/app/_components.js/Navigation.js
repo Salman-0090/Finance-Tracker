@@ -1,18 +1,21 @@
 import Link from "next/link";
-import { auth } from "../_lib/auth";
+
 import Image from "next/image";
 
 
-export default async function Navigation() {
-    const session = await auth()
+export default async function Navigation({session}) {
+   
    
     return (
-        <nav className="p-4">
-            <ul className="flex justify-between">
-                <li><Link href="/">Dashboard</Link></li>
-                <li><Link href="/transactions">Transactions</Link></li>
-                <li><Link href="/add">Add Transactions</Link></li>
-                <li>{session?.user?.image ?<Link href="/login"><Image width={40} height={40} src={session.user.image} alt="use-image" /></Link> : ""}</li>    
+        <nav className="p-4 bg-blue-400">
+            <ul className="flex justify-between align-items flex-wrap text-blue-50">
+                <li><Link href="/">Home</Link></li>
+                 <li><Link href="/dashboard">Dashboard</Link></li>
+                <li><Link href="/dashboard/transactions">Transactions</Link></li>
+                <li><Link href="/dashboard/add">Add Transactions</Link></li>
+                <li>{session?.user?.image ?<Link className="flex gap-2 items-center" href="/dashboard/profile">
+                <span>Profile</span><Image className="rounded-full" width={25} height={25} src={session.user.image} alt="use-image" /></Link> : ""}
+                </li>    
             </ul>
         </nav>
     )
