@@ -11,7 +11,7 @@ export default function Transaction({transaction}) {
         await deleteTransaction(transaction.id)
     }
     return (
-   <ul className="flex flex-col gap-3 mt-6 px-4">
+   <ul className="flex flex-col gap-3 mt-6 px-4 max-w-3xl mx-auto">
   <li className="
     flex flex-col gap-2 px-4 py-2 bg-blue-100 rounded-lg border border-stone-200 shadow-sm hover:shadow-md transition-shadow
     sm:grid sm:grid-cols-[100px_80px_1fr_100px_100px_60px] sm:items-center sm:gap-4
