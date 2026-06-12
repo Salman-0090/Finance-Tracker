@@ -1,5 +1,6 @@
 "use client";
-import { deleteTransaction } from "../_lib/data-service";
+
+import { deleteTransaction } from "../_lib/action";
 import Button from "./Button";
 
 export default function Transaction({transaction}) {

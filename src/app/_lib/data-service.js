@@ -1,3 +1,5 @@
+
+import { revalidatePath } from "next/cache";
 import { auth } from "./auth";
 import { supabase } from "./supabase";
 
@@ -18,19 +20,6 @@ export async function getTransactions() {
     return data;
 }
 
-export async function deleteTransaction(id) {
-     const session = await auth();
-    const currentUser = await getUser(session.user.email);
-    if(!currentUser) throw new Error("Unauthorized");
-    const {error} = await supabase
-    .from("transactions")
-    .delete()
-    .eq("id", id)
-    .eq("user_id", currentUser.id)
-    if (error) throw new Error(error.message);
-   
-    
-}
 
 export async function getUser(email) {
     const {data, error} = await supabase
@@ -53,7 +42,7 @@ export async function createUser(newUser) {
 
  
 
-export function getMonthlySummary(transactions) {
+export  function getMonthlySummary(transactions) {
     const map = {};
 
     transactions.forEach(({ date, type, amount }) => {
@@ -68,7 +57,7 @@ export function getMonthlySummary(transactions) {
 }
 
 
-export function getCategoryBreakdown(transactions) {
+export  function getCategoryBreakdown(transactions) {
     const map = {};
 
     transactions.forEach(({ category, amount, type }) => {
