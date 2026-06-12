@@ -5,7 +5,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } fro
 
 export default function MonthlyChart({ data }) {
     return (
-        <div className="bg-white rounded-xl p-4 shadow-sm border border-stone-200">
+        <div className="bg-blue-100 rounded-xl p-4 shadow-sm border border-stone-200">
             <h2 className="font-semibold text-stone-700 mb-4">Monthly Overview</h2>
             <ResponsiveContainer width="100%" height={250}>
                 <BarChart data={data}>

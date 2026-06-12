@@ -43,8 +43,6 @@ export async function signOutAction() {
 
 
 export async function deleteTransaction(id) {
-     console.log("1. deleteTransaction called with id:", id);
-
      const session = await auth();
     const currentUser = await getUser(session.user.email);
     if(!currentUser) throw new Error("Unauthorized");
@@ -53,8 +51,6 @@ export async function deleteTransaction(id) {
     .delete()
     .eq("id", id)
     .eq("user_id", currentUser.id)
-    console.log('Deleteddata', data)
-    console.log("5. error:", error);
     if (error) throw new Error(error.message);
    revalidatePath("/dashboard")
     

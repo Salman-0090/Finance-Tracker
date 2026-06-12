@@ -43,7 +43,7 @@ export default function TransactionForm () {
         <input type="number" name="amount" placeholder="3455" className="border border-stone-500 rounded bg-blue-100 px-2 py-1 w-full" required/>
     </div>
 
-    <Button className="px-4 py-2 bg-blue-500 cursor-pointer self-center rounded text-blue-200 mt-2">Submit</Button>
+    <Button variant="primary">Submit</Button>
 </form>
     )
 }
