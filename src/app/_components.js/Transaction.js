@@ -1,8 +1,13 @@
+"use client";
+import { deleteTransaction } from "../_lib/data-service";
 import Button from "./Button";
 
 export default function Transaction({transaction}) {
     if (!transaction) {
         return <p>Transaction is undefined</p>;
+    }
+    async function handleDelete() {
+        await deleteTransaction(transaction.id)
     }
     return (
     <ul className="flex gap-4 justify-center mt-6">
@@ -27,7 +32,7 @@ export default function Transaction({transaction}) {
         {transaction.category}
     </span>
 
-    <Button className="text-xs px-2 py-1 bg-red-100 text-red-600 rounded hover:bg-red-200 cursor-pointer">
+    <Button className="text-xs px-2 py-1 bg-red-100 text-red-600 rounded hover:bg-red-200 cursor-pointer" onClick={handleDelete}>
         Delete
     </Button>
 </li>
