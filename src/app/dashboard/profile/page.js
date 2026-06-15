@@ -8,7 +8,7 @@ export const metadata = {
 export default async function Page() {
   const session= await auth()
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center mt-8">
       <p>{ `Name: ${session.user.name}`}</p>
        <p>{ `Email: ${session.user.email}`}</p>
        <LogoutButton />

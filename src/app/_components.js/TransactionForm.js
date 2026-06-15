@@ -11,7 +11,10 @@ export default function TransactionForm () {
     
     <div className="grid grid-cols-[120px_1fr] items-center gap-3">
         <label className="text-right font-medium">Date</label>
+        <div className="min-w-0">
+
         <input name="date" type="date" className="border border-stone-500 rounded bg-blue-100 px-2 py-1 w-full" required/>
+        </div>
     </div>
 
     <div className="grid grid-cols-[120px_1fr] items-center gap-3">

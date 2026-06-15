@@ -3,9 +3,9 @@
 import Transactions from "../../_components.js/Transactions";
 
 
-export default function Page() {
-    
+export default async function Page({searchParams}) {
+        const resolvedSearchPramas = await searchParams
         return (<div>
-            <Transactions />
+            <Transactions searchParams={resolvedSearchPramas}/>
         </div>)
 }

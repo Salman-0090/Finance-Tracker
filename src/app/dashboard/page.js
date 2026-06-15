@@ -18,8 +18,9 @@ import CategoryChart from "../_components.js/CategoryChart";
 import { getCategoryBreakdown, getMonthlySummary, getTransactions } from "../_lib/data-service";
 
 
-export default async function DashboardPage() {
-    const transactions = await getTransactions();
+export default async function DashboardPage({searchParams}) {
+    const currentPage = Number(searchParams.page) || 1
+    const {transactions} = await getTransactions(currentPage);
 
     const monthlySummary = getMonthlySummary(transactions);
     const categoryBreakdown = getCategoryBreakdown(transactions);
