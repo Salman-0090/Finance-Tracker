@@ -4,28 +4,45 @@ import { auth } from "./auth";
 import { supabase } from "./supabase";
 
 
-export async function getTransactions(page=1) {
+export async function getTransactions(page=1, category="all", startDate=null,  endDate=null) {
     const PAGE_SIZE = 6;
    const from = (page - 1) * PAGE_SIZE;
    const to = from + PAGE_SIZE - 1;
     const session = await auth()
     const currentUser = await getUser(session.user.email)
-    const {data, count, error} = await supabase
+  
+    let query = supabase
     .from("transactions")
     .select("*", {count: "exact"})
     .eq("user_id", currentUser.id)
     .order("created_at", {ascending:false})
     .range(from, to)
+
+    if(category !== "all") {
+        query= query.eq("category", category)
+    }
+
+    if(startDate) {
+        query = query.gte("date", startDate)
+    }
+
+    if(endDate) {
+        query = query.lte("date", endDate)
+    }
+
+    const {data, count, error} = await query
+
     if(error) {
         console.error(error);
         throw new Error("Transactions could not be loaded")
     }
-    
+  
     return {
         transactions: data,
         totalCount: count ?? 0,
         totalPages:Math.ceil((count??0)/PAGE_SIZE),
     }   
+    
 }
 
 

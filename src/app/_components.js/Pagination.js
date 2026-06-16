@@ -15,8 +15,8 @@ export default function Pagination({ currentPage, totalPages }) {
 
   if (totalPages <= 1) return null;
 
-  return (
-    <div className="flex items-center justify-center gap-2 mt-4">
+  return (  
+    <div className="flex items-center justify-center gap-2 mt-2 mb-2">
       <button
         onClick={() => goToPage(currentPage - 1)}
         disabled={currentPage === 1}
