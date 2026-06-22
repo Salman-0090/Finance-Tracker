@@ -1,18 +1,4 @@
 
-// import LoggedIn from "../_components.js/LoggedIn";
-
-// export default function Page() {
-  
-//     return (  
-//         <div>
-//             <LoggedIn />
-//         </div>
-//     )
-// }
-
-// src/app/dashboard/page.jsx
-
-
 import MonthlyChart from "../_components.js/MonthlyChart";
 import CategoryChart from "../_components.js/CategoryChart";
 import { getCategoryBreakdown, getMonthlySummary, getTransactions } from "../_lib/data-service";

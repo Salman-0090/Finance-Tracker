@@ -1,11 +1,12 @@
 import Link from "next/link";
 
 import Image from "next/image";
+import { getTransactions } from "../_lib/data-service";
+import { redirect } from "next/navigation";
 
 
 export default async function Navigation({session}) {
-   
-   
+    
     return (
         <nav className="p-4 bg-blue-400">
             <ul className="flex justify-between align-items flex-wrap text-blue-50 ">

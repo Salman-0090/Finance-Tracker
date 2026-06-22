@@ -23,7 +23,7 @@ export default function TransactionFilters({ currentCategory, startDate, endDate
   return (
     <div className="flex flex-col gap-4 mb-6 mt-2">
 
-      {/* Category Filter */}
+      
       <div className="flex gap-2 flex-wrap">
         {CATEGORIES.map((cat) => (
           <button
@@ -40,7 +40,7 @@ export default function TransactionFilters({ currentCategory, startDate, endDate
         ))}
       </div>
 
-      {/* Date Range Filter */}
+     
       <div className="flex gap-3 items-center">
         <div className="flex flex-col gap-1">
           <label className="text-xs text-gray-500">From</label>
