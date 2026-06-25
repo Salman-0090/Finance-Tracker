@@ -5,7 +5,8 @@ import { getCategoryBreakdown, getMonthlySummary, getTransactions } from "../_li
 
 
 export default async function DashboardPage({searchParams}) {
-    const currentPage = Number(searchParams.page) || 1
+    const { page } = await searchParams
+    const currentPage = Number(page) || 1
     const {transactions} = await getTransactions(currentPage);
 
     const monthlySummary = getMonthlySummary(transactions);

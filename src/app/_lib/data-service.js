@@ -5,11 +5,13 @@ import { supabase } from "./supabase";
 
 
 export async function getTransactions(page=1, category="all", startDate=null,  endDate=null) {
+     const session = await auth()
+    if(!session) return { transactions: [] }
+    const currentUser = await getUser(session?.user.email)
     const PAGE_SIZE = 6;
    const from = (page - 1) * PAGE_SIZE;
    const to = from + PAGE_SIZE - 1;
-    const session = await auth()
-    const currentUser = await getUser(session.user.email)
+   
   
     let query = supabase
     .from("transactions")
