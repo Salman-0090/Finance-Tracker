@@ -1,7 +1,7 @@
 
 import { redirect } from "next/navigation";
 import { auth } from "../_lib/auth";
-import Navigation from "../_components.js/Navigation";
+import Navigation from "../_components.js/NavigationClient";
 
 export default async function Layout({ children }) {
   const session = await auth();
